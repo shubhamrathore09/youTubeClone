@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJMZcJh4HUHof4Rr_JtpPKM1-pfnLH3XxfijsUbHfMWJb5wvUY_EbaDd46T483Q1PJa2g&usqp=CAU" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/b87712823b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="secondNavbar.css">
+</head>
+<body>
+<div id="side_Navbar">
+    <script type="module">
+        import sidebar from './sidenavbar.js'
+        document.getElementById("side_Navbar").innerHTML=sidebar;
+    </script>
+</div>
+
+    <div id="navbar">
+        <script type="module">
+            import nav from './navbar.js';
+            document.getElementById("navbar").innerHTML=nav;
+        </script>
+    </div>
+
+
+<div id="young" class="young">
+    <div id="second_navbar" class="second_navbar">
+    <button>All</button>
+    <button>Music</button>
+    <button>Live</button>
+    <button>Movie</button>
+    <button>Comedy</button>
+    <button>News</button>
+    <button>English</button>
+    <button>short Movie</button>
+    <button>bhajan</button>
+    <button>Trailer</button>
+    <button>HollyBood Movie</button>
+    <button>Computor programing</button>
+    <button>Recent View</button>
+    <button>History</button>
+    <button>Cartoon</button>
+    </div>
+</div>
+
+<div id="main_body" class="main_body">
+    <div id="main" class="main">
+        
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+
+// AIzaSyB4E7ZUCGz4pmwKGILsv_8AC6efTtuP9lk
+//
+let main=document.getElementById("main");
+async function Value(){
+    let ans=document.getElementById("search_box").value;
+    console.log(ans)
+    try{
+        let res=await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${ans}&key=AIzaSyB4E7ZUCGz4pmwKGILsv_8AC6efTtuP9lk&part=Snippet`);
+        let data=await res.json();
+        console.log(data.items);
+        Display(data.items);
+    }
+    catch(Exception){
+        console.log(Exception);
+    }
+}
+
+async function firstcall(){
+
+    try{
+        let res=await fetch(`https://youtube.googleapis.com/youtube/v3/search?key=AIzaSyB4E7ZUCGz4pmwKGILsv_8AC6efTtuP9lk&part=Snippet&maxResults=20`);
+        let data=await res.json();
+        console.log(data);
+        Display(data.items);
+    }
+    catch(Exception){
+        console.log("Server error")
+    }
+}
+firstcall();
+
+
+Display=(data)=>{
+    main.innerHTML=null;
+    data.forEach(function({id,snippet}){
+        let div=document.createElement("div");
+        let img=document.createElement("iframe");
+        img.src=`https://www.youtube.com/embed/${id.videoId}`;
+        img.width=`100%`;
+        img.height=`100%`;
+        img.allow=`fullscreen`;
+        img.set
+        div.append(img);
+        // div.addEventListener("click",function(){
+        //     watch_movie(id);
+        // })
+        main.append(img);
+        
+        // console.log(snippet)
+    })
+}
+
+function watch_movie(items){
+    console.log(items.videoId);
+    let iframe=document.createElement("iframe");
+    iframe.src=`https://www.youtube.com/embed/${items.videoId}`
+    iframe.width=`50%`;
+    iframe.height=`50%`;
+    iframe.allow=`fullscreen`
+}
+
+
+let id;
+function degu(fun,delay){
+   if(id){
+    clearTimeout(id);
+   }
+   id=setTimeout(fun,delay)
+}
+
+    let check_val=0;
+    check=()=>{
+        if(check_val==0){
+            document.getElementById("Hide_side_menu").style.left="-100%"
+            document.getElementById("young").style.width="100%"
+            document.getElementById("young").style.marginLeft="75px"
+            document.getElementById("main_body").style.marginLeft="90px";
+            check_val++;
+        }
+        else{
+            document.getElementById("Hide_side_menu").style.left="0%"
+            document.getElementById("young").style.width="85%";
+            document.getElementById("young").style.marginLeft="15%"
+            document.getElementById("main_body").style.marginLeft="16%"
+        check_val--;
+        }
+    }
+ 
+</script>

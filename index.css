@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(231, 224, 224);
+    width: 100%;
+    height:1200px;
+    border: 1px solid red;
+}   
+.main_body{
+    margin-left: 16%;
+    transition: all .1s;
+}
+.main{
+    margin-top: 150px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+.main>div{
+    width: 100%;
+    height: 250px;
+    border: 1px solid red;
+}
+.main>div>img{
+    width: 100%;
+    height: 100%;
+}

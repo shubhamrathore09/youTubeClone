@@ -1,0 +1,32 @@
+.young{
+    position: fixed;
+    padding-right: 100px;
+    width: 85%;
+    margin-left: 15%;
+    transition: all .2s;
+}
+.second_navbar{
+   margin-top: 60px;
+   display: flex;
+   /* border: 1px solid black; */
+   overflow:scroll;
+   background-color: white;
+   padding: 10px 0px;
+}
+.second_navbar>button{
+    /* border: 1px solid red; */
+    border: none;
+    padding: 5px 30px;
+    margin-left: 20px;
+    white-space:nowrap;
+    font-size: 16px;
+    background-color: #0000000D;
+    color: #030303;
+    font-family: sans-serif;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.second_navbar>button:nth-child(1){
+    background-color: #030303;
+    color: white;
+}
